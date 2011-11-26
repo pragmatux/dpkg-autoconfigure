@@ -1,0 +1,5 @@
+dpkg-autoconfigure (1.5~dev2) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Ryan Kuester <rkuester@insymbols.com>  Sat, 26 Nov 2011 03:28:22 +0000

@@ -1,0 +1,19 @@
+#!/bin/sh
+# Configure all pending packages after importing debconf selections.
+
+cat /usr/share/dpkg-autoconfigure/selections.d/* 2>/dev/null \
+| debconf-set-selections
+
+# Perl is noisy if these are not set.
+: ${LC_ALL:=C}; export LC_ALL
+: ${LANG:=C}; export LANG
+: ${LANGUAGE:=C}; export LANGUAGE
+
+# Potentially configure a few times to overcome cyclic dependencies.
+export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_NONINTERACTIVE_SEEN=true
+dpkg --configure --pending ||
+dpkg --configure --pending ||
+dpkg --configure --pending ||
+dpkg --configure --pending ||
+dpkg --configure --pending

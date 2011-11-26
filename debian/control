@@ -1,0 +1,26 @@
+Source: dpkg-autoconfigure
+Section: embedded
+Priority: extra
+Maintainer: Ryan Kuester <rkuester@insymbols.com>
+Build-Depends: debhelper (>= 7.0.50~)
+Standards-Version: 3.8.4
+
+Package: dpkg-autoconfigure
+Architecture: any
+Depends: ${misc:Depends}
+Description: Configure pending packages
+ Runs dpkg --configure --pending after populating the debconf database from a
+ directory of configuration files.  Useful to run at first boot, or on a
+ multistrapped filesystem from a build host using emulation of the target
+ architecture.
+
+Package: dpkg-autoconfigure-firstboot
+Architecture: all
+Depends: dpkg-autoconfigure (= ${binary:Version}), firstboot, ${misc:Depends}
+Description: Configure pending packages at first boot
+ Runs dpkg --configure --pending after populating the debconf database from a
+ directory of configuration files.  Useful to run at first boot, or on a
+ multistrapped filesystem from a build host using emulation of the target
+ architecture.
+ .
+ This package hooks dpkg-autoconfigure into firstboot.
