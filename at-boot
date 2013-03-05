@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+/usr/bin/dpkg-autoconfigure
+rm /at-boot
+/bin/systemctl --no-block reboot

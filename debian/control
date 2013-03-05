@@ -24,3 +24,14 @@ Description: Configure pending packages at first boot
  architecture.
  .
  This package hooks dpkg-autoconfigure into firstboot.
+
+Package: dpkg-autoconfigure-at-boot
+Architecture: all
+Depends: dpkg-autoconfigure (= ${binary:Version}), at-boot, ${misc:Depends}
+Description: Configure pending packages at first boot
+ Runs dpkg --configure --pending after populating the debconf database from a
+ directory of configuration files.  Useful to run at first boot, or on a
+ multistrapped filesystem from a build host using emulation of the target
+ architecture.
+ .
+ This package hooks dpkg-autoconfigure into the systemd at-boot.target.
