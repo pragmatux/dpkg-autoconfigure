@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7.0.50~)
 Standards-Version: 3.8.4
 
 Package: dpkg-autoconfigure
-Architecture: any
+Architecture: all
 Depends: ${misc:Depends}
 Description: Configure pending packages
  Runs dpkg --configure --pending after populating the debconf database from a
