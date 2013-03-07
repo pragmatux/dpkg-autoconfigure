@@ -1,3 +1,11 @@
+dpkg-autoconfigure (1.6) unstable; urgency=low
+
+  * Add a package which hooks the systemd at-boot.target
+  * Packaging: change from git to native package format
+  * Packaging: fix copyright
+
+ -- Ryan Kuester <rkuester@insymbols.com>  Thu, 07 Mar 2013 02:10:20 +0000
+
 dpkg-autoconfigure (1.5~dev2) unstable; urgency=low
 
   * Initial Release.
