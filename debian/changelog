@@ -1,13 +1,11 @@
-dpkg-autoconfigure (1.6) unstable; urgency=low
+dpkg-autoconfigure (0) UNRELEASED; urgency=low
 
-  * Add a package which hooks the systemd at-boot.target
-  * Packaging: change from git to native package format
-  * Packaging: fix copyright
+  NOTE this changelog is generated from git history when the
+  source package is built. Any change made to this file will be
+  overwritten. Do not commit the generated file to git.
 
- -- Ryan Kuester <rkuester@insymbols.com>  Thu, 07 Mar 2013 02:10:20 +0000
+  The package name above is significant and must be maintained,
+  as several debian tools (e.g., from the devscripts package)
+  read the changelog.
 
-dpkg-autoconfigure (1.5~dev2) unstable; urgency=low
-
-  * Initial Release.
-
- -- Ryan Kuester <rkuester@insymbols.com>  Sat, 26 Nov 2011 03:28:22 +0000
+ -- Generated <an@example.com>  Thu, 01 Jan 1970 00:00:00 +0000
