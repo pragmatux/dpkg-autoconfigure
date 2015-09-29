@@ -22,4 +22,7 @@ export DEBIAN_NONINTERACTIVE_SEEN=true
 	dpkg --configure --pending ||
 	dpkg --configure --pending
 } 2>&1 | tee -a $LOG | grep --line-buffered '^Setting up '
+
+dpkg --audit 2>&1 | tee -a $LOG
+
 gzip $LOG
