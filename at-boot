@@ -1,5 +1,17 @@
 #!/bin/sh
 set -e
+
+policy=/usr/sbin/policy-rc.d
+cat >$policy << EOF
+#!/bin/sh
+echo "policy-rc.d denying systemctl start during /at-boot"
+exit 101
+EOF
+chmod 755 $policy
+trap "rm -f $policy" EXIT
+
 /usr/bin/dpkg-autoconfigure
+
+rm $policy
 rm /at-boot
-/bin/systemctl --no-block reboot
+exec /bin/systemctl --no-block reboot
