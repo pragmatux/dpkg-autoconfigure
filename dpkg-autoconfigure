@@ -12,15 +12,32 @@ LOG=/var/log/dpkg-autoconfigure.log
 cat /usr/share/dpkg-autoconfigure/selections.d/* 2>/dev/null \
 | debconf-set-selections
 
-# Potentially configure a few times to overcome cyclic dependencies.
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_NONINTERACTIVE_SEEN=true
 {
+	# Configure certain essential packages first. This is inspired by
+	# d-i/debootstrap, so as ugly as it seems, it's somewhat legit. We can
+	# assume the existance of these packages becuase they're Essental.
+	force_configure () {
+		dpkg --force-depends --configure $1
+	}
+	ln -sf mawk /usr/bin/awk
+	force_configure base-passwd
+	force_configure base-files
+	force_configure dpkg
+	force_configure libc6
+	force_configure perl-base
+	rm /usr/bin/awk
+	force_configure mawk
+	force_configure debconf
+
+	# Potentially configure a few times to overcome cyclic dependencies.
 	dpkg --configure --pending ||
 	dpkg --configure --pending ||
 	dpkg --configure --pending ||
 	dpkg --configure --pending ||
 	dpkg --configure --pending
+
 } 2>&1 | tee -a $LOG | grep --line-buffered '^Setting up '
 
 dpkg --audit 2>&1 | tee -a $LOG
